@@ -7,24 +7,30 @@ import {
   Text,
   Image,
 } from "react-native";
+import { TouchableWithoutFeedback } from "react-native";
 import Pressable from "react-native/Libraries/Components/Pressable/Pressable";
 
-export default function ArticlesScreen({navigation}) {
-    const handleArticleClick = () => {
-        navigation.navigate("Article");
-    }
-    
+export default function ArticlesScreen({ navigation }) {
+  const handleArticleClick = (item) => {
+    navigation.navigate("Article", {
+      data: {
+        item,
+      },
+    });
+  };
+
   return (
     <SafeAreaView>
       <View style={styles.container}>
         <Text style={styles.sectionTitle}>Stories</Text>
-        <FlatList
-          data={data}
-          renderItem={({ item }) => articleCard({ item, onPress: handleArticleClick })}
-          keyExtractor={(item) => item.id}
-          onPress={handleArticleClick}
-        ></FlatList>
       </View>
+      <FlatList
+        data={data}
+        renderItem={({ item }) =>
+          articleCard({ item, onPress: (item) => handleArticleClick(item) })
+        }
+        keyExtractor={(item) => item.id}
+      ></FlatList>
     </SafeAreaView>
   );
 }
@@ -32,43 +38,49 @@ export default function ArticlesScreen({navigation}) {
 const data = [
   {
     id: 1,
+    image: "https://picsum.photos/200/300",
     title: "Article 1",
     category: "Category 1",
     author: "Sabokhat",
     date: "12/2022",
+    content:
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
   },
   {
     id: 2,
+    image: "https://picsum.photos/200/300",
     title: "Article 2",
     category: "Category 2",
     author: "Sabokhat",
     date: "12/2022",
+    content:
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
   },
   {
     id: 3,
+    image: "https://picsum.photos/200/300",
     title: "Article 2",
     category: "Category 2",
     author: "Sabokhat",
     date: "12/2022",
+    content:
+      "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like). Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
   },
 ];
 
-
-
 const articleCard = ({ item, onPress }) => {
   return (
-    <Pressable style={styles.card} onPress={onPress}>
-      <Image
-        style={styles.image}
-        source={{ uri: "https://picsum.photos/200/300" }}
-      />
-      <Text style={styles.category}>{item.category}</Text>
-      <Text style={styles.title}>{item.title}</Text>
-      <View style={styles.info}>
-        <Text style={styles.author}>{item.author}</Text>
-        <Text style={styles.date}>{item.date}</Text>
+    <TouchableWithoutFeedback style={styles.card} onPress={() => onPress(item)}>
+      <View style={styles.container}>
+        <Image style={styles.image} source={{ uri: item.image }} />
+        <Text style={styles.category}>{item.category}</Text>
+        <Text style={styles.title}>{item.title}</Text>
+        <View style={styles.info}>
+          <Text style={styles.author}>{item.author}</Text>
+          <Text style={styles.date}>{item.date}</Text>
+        </View>
       </View>
-    </Pressable>
+    </TouchableWithoutFeedback>
   );
 };
 
@@ -84,6 +96,7 @@ const styles = StyleSheet.create({
   },
   card: {
     marginTop: 5,
+    marginBottom: 15,
     height: 300,
   },
   image: {

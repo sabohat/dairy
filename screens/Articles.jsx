@@ -8,9 +8,9 @@ import {
   Image,
 } from "react-native";
 import { TouchableWithoutFeedback } from "react-native";
-import Pressable from "react-native/Libraries/Components/Pressable/Pressable";
 
 export default function ArticlesScreen({ navigation }) {
+
   const handleArticleClick = (item) => {
     navigation.navigate("Article", {
       data: {

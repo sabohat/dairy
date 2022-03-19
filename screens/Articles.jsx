@@ -9,15 +9,20 @@ import {
 } from "react-native";
 import Pressable from "react-native/Libraries/Components/Pressable/Pressable";
 
-export default function ArticlesScreen() {
+export default function ArticlesScreen({navigation}) {
+    const handleArticleClick = () => {
+        navigation.navigate("Article");
+    }
+    
   return (
     <SafeAreaView>
       <View style={styles.container}>
         <Text style={styles.sectionTitle}>Stories</Text>
         <FlatList
           data={data}
-          renderItem={articleCard}
+          renderItem={({ item }) => articleCard({ item, onPress: handleArticleClick })}
           keyExtractor={(item) => item.id}
+          onPress={handleArticleClick}
         ></FlatList>
       </View>
     </SafeAreaView>
@@ -48,9 +53,11 @@ const data = [
   },
 ];
 
-const articleCard = ({ item }) => {
+
+
+const articleCard = ({ item, onPress }) => {
   return (
-    <Pressable style={styles.card}>
+    <Pressable style={styles.card} onPress={onPress}>
       <Image
         style={styles.image}
         source={{ uri: "https://picsum.photos/200/300" }}

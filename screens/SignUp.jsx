@@ -1,10 +1,31 @@
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, Platform } from "react-native";
 import { TextInput, Button } from "react-native-paper";
 import React from "react";
 import { TextInputMask } from "react-native-masked-text";
+// import {
+// 	FirebaseRecaptchaVerifierModal,
+// 	FirebaseRecaptchaBanner,
+// } from "expo-firebase-recaptcha";
+
+import { app, auth } from "../services/firebase";
+
+// const auth = getAuth();
+
+// if (!app?.options || Platform.OS === "web") {
+// 	throw new Error(
+// 		"This example only works on Android or iOS, and requires a valid Firebase config."
+// 	);
+// }
 
 export default function SignUpScreen() {
 	const [phoneNumber, setPhoneNumber] = React.useState("");
+	const recaptchaVerifier = React.useRef(null);
+	const [verificationId, setVerificationId] = React.useState();
+	const [verificationCode, setVerificationCode] = React.useState();
+
+	// const firebaseConfig = app ? app.options : undefined;
+	const [message, showMessage] = React.useState();
+	const attemptInvisibleVerification = false;
 
 	const handleLogin = () => {
 		let correctPhone = phoneNumber.replaceAll(/\D/g, "");

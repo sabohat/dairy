@@ -4,6 +4,7 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import { Provider as PaperProvider } from "react-native-paper";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import "./services/firebase";
+import { AuthProvider } from "./providers/AuthProvider";
 
 if (typeof String.prototype.replaceAll === "undefined") {
 	String.prototype.replaceAll = function (match, replace) {
@@ -17,15 +18,20 @@ const queryClient = new QueryClient();
 export default function App() {
 	return (
 		<SafeAreaProvider>
-			<SafeAreaView edges={["top", "left", "right"]} style={{ flex: 1 }}>
-				<PaperProvider>
-					<NavigationContainer>
-						<QueryClientProvider client={queryClient}>
-							<MainStackNavigator />
-						</QueryClientProvider>
-					</NavigationContainer>
-				</PaperProvider>
-			</SafeAreaView>
+			<NavigationContainer>
+				<SafeAreaView
+					edges={["top", "left", "right"]}
+					style={{ flex: 1 }}
+				>
+					<AuthProvider>
+						<PaperProvider>
+							<QueryClientProvider client={queryClient}>
+								<MainStackNavigator />
+							</QueryClientProvider>
+						</PaperProvider>
+					</AuthProvider>
+				</SafeAreaView>
+			</NavigationContainer>
 		</SafeAreaProvider>
 	);
 }

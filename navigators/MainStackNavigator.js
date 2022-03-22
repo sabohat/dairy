@@ -5,12 +5,14 @@ import ArticleDetails from "../screens/ArticleDetails";
 import ArticlesScreen from "../screens/Articles";
 import TabBarNavigator from "./TabBarNavigator";
 import * as Sharing from "expo-sharing";
+import SignUpScreen from "../screens/SignUp";
 
 const MainStack = createNativeStackNavigator();
 
 export default function MainStackNavigator() {
 	return (
-		<MainStack.Navigator>
+		<MainStack.Navigator initialRouteName="SignUp">
+			<MainStack.Screen name="SignUp" component={SignUpScreen} />
 			<MainStack.Screen
 				name="BottomTabNavigator"
 				component={TabBarNavigator}

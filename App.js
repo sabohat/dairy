@@ -5,6 +5,12 @@ import { Provider as PaperProvider } from "react-native-paper";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import "./services/firebase";
 
+if (typeof String.prototype.replaceAll === "undefined") {
+	String.prototype.replaceAll = function (match, replace) {
+		return this.replace(new RegExp(match, "g"), () => replace);
+	};
+}
+
 // Create a client
 const queryClient = new QueryClient();
 

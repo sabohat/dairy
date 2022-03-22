@@ -40,7 +40,7 @@ export default function ArticlesScreen({ navigation }) {
 					})
 				}
 				keyExtractor={(item) => item.id}
-				style={{ paddingHorizontal: 16, marginBottom: 100 }}
+				style={{ paddingHorizontal: 16 }}
 			/>
 		</SafeAreaView>
 	);

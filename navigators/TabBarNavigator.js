@@ -3,6 +3,7 @@ import { createMaterialBottomTabNavigator } from "@react-navigation/material-bot
 import ArticlesScreen from "../screens/Articles";
 import ProfileScreen from "../screens/ProfileScreen";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import ChatScreen from "../screens/ChatScreen";
 
 export default function TabBarNavigator() {
 	const BottomNavigator = createMaterialBottomTabNavigator();
@@ -11,13 +12,30 @@ export default function TabBarNavigator() {
 		<BottomNavigator.Navigator
 			barStyle={{
 				backgroundColor: "red",
-				paddingTop: 5,
+				
 			}}
 		>
+			<BottomNavigator.Screen
+				name="Diary"
+				component={ProfileScreen}
+				options={{
+					title: "Kundalik",
+					tabBarIcon: ({ focused, color }) => {
+						return (
+							<MaterialCommunityIcons
+								name="calendar"
+								size={20}
+								color={color}
+							/>
+						);
+					},
+				}}
+			/>
 			<BottomNavigator.Screen
 				name="Articles"
 				component={ArticlesScreen}
 				options={{
+					title: "Maqolalar",
 					tabBarIcon: ({ focused, color }) => {
 						return (
 							<MaterialCommunityIcons
@@ -30,13 +48,13 @@ export default function TabBarNavigator() {
 				}}
 			/>
 			<BottomNavigator.Screen
-				name="Profile"
-				component={ProfileScreen}
+				name="Chat"
+				component={ChatScreen}
 				options={{
 					tabBarIcon: ({ focused, color }) => {
 						return (
 							<MaterialCommunityIcons
-								name="account"
+								name="domino-mask"
 								size={20}
 								color={color}
 							/>
@@ -44,6 +62,7 @@ export default function TabBarNavigator() {
 					},
 				}}
 			/>
+			
 		</BottomNavigator.Navigator>
 	);
 }

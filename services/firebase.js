@@ -29,6 +29,8 @@ if (getApps().length < 1) {
 	fireAuth = getAuth();
 }
 
+console.log(firebaseApp, fireAuth);
+
 export default {
 	firebaseApp,
 	fireAuth,

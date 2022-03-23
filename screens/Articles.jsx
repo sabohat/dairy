@@ -29,7 +29,7 @@ export default function ArticlesScreen({ navigation }) {
 	return (
 		<SafeAreaView>
 			<View style={styles.container}>
-				<Text style={styles.sectionTitle}>Stories</Text>
+				<Text style={styles.sectionTitle}>Maqolalar</Text>
 			</View>
 			<FlatList
 				data={data}

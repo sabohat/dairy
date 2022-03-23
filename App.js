@@ -1,9 +1,9 @@
+import "./services/firebase";
 import { NavigationContainer } from "@react-navigation/native";
 import MainStackNavigator from "./navigators/MainStackNavigator";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { Provider as PaperProvider } from "react-native-paper";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
-import "./services/firebase";
 import { AuthProvider } from "./providers/AuthProvider";
 
 if (typeof String.prototype.replaceAll === "undefined") {

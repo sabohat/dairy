@@ -1,9 +1,8 @@
+import "../services/firebase";
 import { View, Text, StyleSheet, Platform, Alert } from "react-native";
 import { TextInput, Button } from "react-native-paper";
 import React from "react";
 import { TextInputMask } from "react-native-masked-text";
-import { firebaseApp, fireAuth } from "../services/firebase";
-
 import { getAuth } from "firebase/auth";
 import { getApp } from "firebase/app";
 import {
@@ -74,7 +73,7 @@ export default function SignUpScreen() {
 				firebaseConfig={app.options}
 				// attemptInvisibleVerification
 			/>
-			<Text style={styles.title}>Let's sign up and use it</Text>
+			<Text style={styles.title}>Ro'yhatdan o'ting</Text>
 			<View style={styles.inputs}>
 				<TextInput
 					placeholder="Telefon raqamingiz"

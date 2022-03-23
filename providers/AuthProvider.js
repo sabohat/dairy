@@ -26,7 +26,9 @@ export function AuthProvider({ children }) {
 					index: 0,
 					routes: [
 						{
-							name: "SignUp",
+							// name: "SignUp",
+							name: "BottomTabNavigator",
+
 						},
 					],
 				});

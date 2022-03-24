@@ -1,3 +1,4 @@
+import "react-native-gesture-handler";
 import "./services/firebase";
 import { NavigationContainer } from "@react-navigation/native";
 import MainStackNavigator from "./navigators/MainStackNavigator";

@@ -95,7 +95,7 @@ export default function SignUpScreen() {
             }}
           />
           <Button onPress={handleLogin} style={styles.button} mode="contained">
-            <Text>Login</Text>
+            <Text>Kirish</Text>
           </Button>
         </View>
         <View style={styles.bottomText}>

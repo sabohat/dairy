@@ -28,7 +28,6 @@ export function AuthProvider({ children }) {
 						{
 							name: "SignUp",
 							// name: "BottomTabNavigator",
-
 						},
 					],
 				});

@@ -6,63 +6,53 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import ChatScreen from "../screens/ChatScreen";
 
 export default function TabBarNavigator() {
-	const BottomNavigator = createMaterialBottomTabNavigator();
+  const BottomNavigator = createMaterialBottomTabNavigator();
 
-	return (
-		<BottomNavigator.Navigator
-			barStyle={{
-				backgroundColor: "pink",
-				
-			}}
-		>
-			<BottomNavigator.Screen
-				name="Diary"
-				component={ProfileScreen}
-				options={{
-					title: "Kundalik",
-					tabBarIcon: ({ focused, color }) => {
-						return (
-							<MaterialCommunityIcons
-								name="calendar"
-								size={20}
-								color={color}
-							/>
-						);
-					},
-				}}
-			/>
-			<BottomNavigator.Screen
-				name="Articles"
-				component={ArticlesScreen}
-				options={{
-					title: "Maqolalar",
-					tabBarIcon: ({ focused, color }) => {
-						return (
-							<MaterialCommunityIcons
-								name="library"
-								size={20}
-								color={color}
-							/>
-						);
-					},
-				}}
-			/>
-			<BottomNavigator.Screen
-				name="Chat"
-				component={ChatScreen}
-				options={{
-					tabBarIcon: ({ focused, color }) => {
-						return (
-							<MaterialCommunityIcons
-								name="domino-mask"
-								size={20}
-								color={color}
-							/>
-						);
-					},
-				}}
-			/>
-			
-		</BottomNavigator.Navigator>
-	);
+  return (
+    <BottomNavigator.Navigator
+      barStyle={{
+        backgroundColor: "pink",
+      }}
+    >
+      <BottomNavigator.Screen
+        name="Diary"
+        component={ProfileScreen}
+        options={{
+          title: "Kundalik",
+          tabBarIcon: ({ focused, color }) => {
+            return (
+              <MaterialCommunityIcons name="calendar" size={20} color={color} />
+            );
+          },
+        }}
+      />
+      <BottomNavigator.Screen
+        name="Articles"
+        component={ArticlesScreen}
+        options={{
+          title: "Maqolalar",
+          tabBarIcon: ({ focused, color }) => {
+            return (
+              <MaterialCommunityIcons name="library" size={20} color={color} />
+            );
+          },
+        }}
+      />
+      <BottomNavigator.Screen
+        name="Chat"
+        component={ChatScreen}
+        options={{
+          tabBarIcon: ({ focused, color }) => {
+            return (
+              <MaterialCommunityIcons
+                name="domino-mask"
+                size={20}
+                color={color}
+              />
+            );
+          },
+        }}
+      />
+    </BottomNavigator.Navigator>
+  );
 }

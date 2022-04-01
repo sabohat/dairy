@@ -11,7 +11,7 @@ export default function TabBarNavigator() {
 	return (
 		<BottomNavigator.Navigator
 			barStyle={{
-				backgroundColor: "red",
+				backgroundColor: "pink",
 				
 			}}
 		>

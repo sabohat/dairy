@@ -18,9 +18,11 @@ import {
   RadioButton,
 } from "react-native-paper";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { getAuth, signOut } from "firebase/auth";
 
 export default function ChatScreen({ navigation }) {
   const [checked, setChecked] = React.useState("menses");
+  const auth = getAuth();
 
   return (
     <View style={styles.container}>
@@ -97,13 +99,14 @@ export default function ChatScreen({ navigation }) {
             <Text>General</Text>
             <MaterialCommunityIcons name="arrow-right" size={20} />
           </Pressable>
-		  <Divider />
+          <Divider />
           <Pressable
             style={styles.option}
-            onPress={() => console.log("settings")}
+            onPress={() => {
+              signOut(auth);
+            }}
           >
-            <Text>Other</Text>
-            <MaterialCommunityIcons name="arrow-right" size={20} />
+            <Text>Akkountdan Chiqish</Text>
           </Pressable>
         </View>
       </View>
@@ -143,7 +146,7 @@ const styles = StyleSheet.create({
   optionList: {
     backgroundColor: "#fff",
     borderRadius: 10,
-	marginBottom: 16,
+    marginBottom: 16,
   },
   option: {
     flexDirection: "row",

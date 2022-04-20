@@ -2,13 +2,14 @@ import React from "react";
 import * as SQLite from "expo-sqlite";
 // import { openDatabase } from "../services/sqllite";
 import { Platform } from "react-native";
+import Models from "../services/models";
 
 const DatabaseContext = React.createContext();
 
 export default function DatabaseProvider({ children }) {
 	const [db, setDb] = React.useState(initDatabase());
 
-	function initDatabase() {
+	async function initDatabase() {
 		try {
 			if (Platform.OS === "web") {
 				return {
@@ -21,11 +22,8 @@ export default function DatabaseProvider({ children }) {
 			}
 
 			const db = SQLite.openDatabase("myDatabaseName.db");
-			db.exec(
-				[{ sql: "SELECT 1+1 as result;", args: [] }],
-				false,
-				(...args) => console.log(args)
-			);
+			let data = await Models.initTables(db);
+			console.log(data);
 		} catch (error) {
 			console.log(error);
 		}

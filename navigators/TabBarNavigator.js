@@ -39,13 +39,13 @@ export default function TabBarNavigator() {
         }}
       />
       <BottomNavigator.Screen
-        name="Chat"
+        name="Profil"
         component={ChatScreen}
         options={{
           tabBarIcon: ({ focused, color }) => {
             return (
               <MaterialCommunityIcons
-                name="domino-mask"
+                name="face-profile-woman"
                 size={20}
                 color={color}
               />

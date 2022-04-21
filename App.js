@@ -6,6 +6,7 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import { Provider as PaperProvider } from "react-native-paper";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import { AuthProvider } from "./providers/AuthProvider";
+import DatabaseProvider from "./providers/DatabaseProvider";
 
 if (typeof String.prototype.replaceAll === "undefined") {
 	String.prototype.replaceAll = function (match, replace) {
@@ -24,13 +25,15 @@ export default function App() {
 					edges={["top", "left", "right"]}
 					style={{ flex: 1 }}
 				>
-					<AuthProvider>
-						<PaperProvider>
-							<QueryClientProvider client={queryClient}>
-								<MainStackNavigator />
-							</QueryClientProvider>
-						</PaperProvider>
-					</AuthProvider>
+					<DatabaseProvider>
+						<AuthProvider>
+							<PaperProvider>
+								<QueryClientProvider client={queryClient}>
+									<MainStackNavigator />
+								</QueryClientProvider>
+							</PaperProvider>
+						</AuthProvider>
+					</DatabaseProvider>
 				</SafeAreaView>
 			</NavigationContainer>
 		</SafeAreaProvider>

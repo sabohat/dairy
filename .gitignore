@@ -14,8 +14,5 @@ web-build/
 .DS_Store
 .env
 
-<<<<<<< HEAD
-=======
 .package-lock.json
 yarn.lock
->>>>>>> 85fd15ec658d2c450029447dc626c611a9f27a3b

@@ -52,7 +52,7 @@ const data = [
     image: "https://picsum.photos/200/300",
     title: "Hayz nima? Yosh qiz va onalarga maslahatlar",
     category: "Hayz",
-    author: "Sabokhat",
+    author: "Anon",
     date: "12/2022",
     content:
       "Hayz sikli-ritmik va siklik qaytalanuvchi gormanal o‘zgarishlar bolib organizmni homlaorlikka tayorlashdir.Hayz — oy ko‘rishning boshlanishi qizlarning balog‘atga yetganidan nishona. Bu qizlar va ayollarda har 21—30 (ko‘pincha 28) kunda sodir bo‘ladigan, 3—6 kun davom etadigan biologik jarayon. Hayz payti asosan tuxumdon va bachadonda o‘zgarish ro‘y beradi, bachadondan ma’lum miqdorda qon ketadi.",
@@ -63,7 +63,7 @@ const data = [
     title:
       "Ko’ngil aynishi haqida – sabablari, belgilari, tashxislash, davolash va oldini olish",
     category: "Sog'liq",
-    author: "Sabokhat",
+    author: "Anon",
     date: "12/2022",
     content:
       "Ko’ngil aynish – bu epigastral sohada, to’sh suyagi orqasida, tomoqda va og’izda o’ziga xos noqulaylik hissi hisoblanib, bu ko’pincha qusish xabarchisidir. Tuprik, gipergidroz, holsizlik, bosh aylanishi bilan birga kelishi mumkin. Bu dietasida xato bo’lgan sog’lom odamlarda juda kam uchraydi. Odatda ovqat hazm qilish organlari va markaziy asab tizimining kasalliklari, intoksikatsiya bilan paydo bo’ladi. Ko’ngil aynish sabablarini aniqlash uchun endoskopik, rentgenologik, ultratovush, elektrofiziologik va laboratoriya tadqiqot usullaridan foydalaniladi. Tashxis qo’yilishidan oldin odatda simptomning og’irligini kamaytirish uchun sedativ fitopreparatlar, prokinetiklar va enterosorbentslar qo’llaniladi.",
@@ -74,7 +74,7 @@ const data = [
     title:
       "Husnbuzarlar yuzda emas, tanada paydo bo‘lsa: kelib chiqish sabablari va davolash usullari",
     category: "Go'zallik",
-    author: "Sabokhat",
+    author: "Anon",
     date: "12/2022",
     content:
       "Ushbu muammo ikki xil sabab tufayli yuzaga kelishi mumkin: tashqi va ichki. Tashqi tomondan ko‘pincha gigiyena talablarining buzilishi, shuningdek, sifatsiz kiyimlar yoki yomon ekologiya tufayli yuzaga keladi. Ichki sabablar esa odatda endokrin tizimning buzilishi, dori-darmonlar qabul qilishning nojo‘ya ta’siri, stress va ovqatlanishning buzilishi bilan bog‘liq.",

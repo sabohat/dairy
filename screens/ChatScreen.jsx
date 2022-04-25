@@ -33,7 +33,7 @@ export default function ChatScreen({ navigation }) {
             source={{ uri: "https://picsum.photos/200/300" }}
           />
           <View style={styles.cardInfo}>
-            <Title>User Name</Title>
+            <Title>User 11121</Title>
             <Paragraph>Email / Phone number</Paragraph>
           </View>
         </Card.Content>

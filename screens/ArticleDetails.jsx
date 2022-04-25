@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { View, Text, StyleSheet, Image } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { PickerItem } from "react-native/Libraries/Components/Picker/Picker";
 import { useQuery } from "react-query";
 
 export default function ArticleDetails({ route, navigator }) {
@@ -18,11 +19,11 @@ export default function ArticleDetails({ route, navigator }) {
 				<Text>Loading</Text>
 			) : (
 				<View style={styles.container}>
-					<Text style={styles.sectionTitle}>{data.title}</Text>
+					<Text style={styles.sectionTitle}>{item.title}</Text>
 					<Image source={{ uri: item.image }} style={styles.image} />
 					<Text style={styles.category}>{item.category}</Text>
 					<View style={styles.contentWrapper}>
-						<Text style={styles.content}>{data.body}</Text>
+						<Text style={styles.content}>{item.content}</Text>
 					</View>
 					<View style={styles.info}>
 						<Text style={styles.author}>{item.author}</Text>

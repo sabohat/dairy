@@ -17,6 +17,11 @@ export default function ProfileScreen() {
       <CalendarProvider>
         <ExpandableCalendar
           initialPosition="closed"
+          // disablePan={true}
+          // hideKnob
+          openThreshold
+          allowShadow
+          closeOnDayPress
           firstDay={1}
           style={{
             width: "100%",
@@ -80,16 +85,25 @@ export default function ProfileScreen() {
             </View>
           </View>
         )}
+
+        {isOpen && (
+          <View style={styles.smallSection}>
+            <View style={styles.smallCircle}>
+              <Text style={styles.smallText}>Keyingi Hayz</Text>
+              <Text style={styles.day}>13 </Text>
+              <Text style={styles.smallText}>kundan so'ng</Text>
+            </View>
+          </View>
+        )}
       </CalendarProvider>
-      <Text>Statistics</Text>
       <View style={styles.statistics}>
-		  <Text>Hayz sikli</Text>
-		  <Text>Normal</Text>
-	  </View>
-	  <View style={styles.statistics}>
-		  <Text>Oxirgi hayz kunlari</Text>
-		  <Text>7</Text>
-	  </View>
+        <Text>Hayz sikli</Text>
+        <Text>Normal</Text>
+      </View>
+      <View style={styles.statistics}>
+        <Text>Oxirgi hayz kunlari</Text>
+        <Text>7</Text>
+      </View>
     </View>
   );
 }
@@ -125,8 +139,39 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.9,
     shadowRadius: 15,
   },
+  smallSection: {
+    textAlign: "center",
+    height: 200,
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    padding: 16,
+  },
+  smallCircle: {
+    width: 170,
+    height: 170,
+    borderRadius: 150,
+    backgroundColor: "pink",
+    justifyContent: "center",
+    alignItems: "center",
+    shadowColor: "pink",
+    shadowOffset: {
+      width: 1,
+      height: 1,
+    },
+    shadowOpacity: 0.9,
+    shadowRadius: 15,
+  },
   text: {
     fontSize: 24,
+  },
+  smallText: {
+      fontSize: 16,
+  },
+  smallDay: {
+    fontWeight: "bold",
+    marginVertical: 10,
+    fontSize: 28,
   },
   day: {
     fontWeight: "bold",
@@ -149,8 +194,8 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     borderRadius: 20,
     padding: 20,
-	display: "flex",
-	flexDirection: "row",
-	justifyContent: "space-between",
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-between",
   },
 });

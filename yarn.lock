@@ -1267,6 +1267,17 @@
     "lodash.pick" "^4.4.0"
     "lodash.template" "^4.5.0"
 
+"@expo/websql@^1.0.1":
+  "integrity" "sha1-//DPnBuqH3D54dZYt8OaQg2bEKk="
+  "resolved" "https://registry.npmjs.org/@expo/websql/-/websql-1.0.1.tgz"
+  "version" "1.0.1"
+  dependencies:
+    "argsarray" "^0.0.1"
+    "immediate" "^3.2.2"
+    "noop-fn" "^1.0.0"
+    "pouchdb-collections" "^1.0.1"
+    "tiny-queue" "^0.2.1"
+
 "@firebase/analytics-compat@0.1.7":
   "integrity" "sha512-bVnv+xM2YwAouWjeo+HCN0GWu6i0sLzM2AcpmfsQuC97SNRFqIpRUYmjaeTdDALt3k1fIUzYMcZZE4xuC2qK/A=="
   "resolved" "https://registry.npmjs.org/@firebase/analytics-compat/-/analytics-compat-0.1.7.tgz"
@@ -2161,6 +2172,11 @@
   "version" "1.0.10"
   dependencies:
     "sprintf-js" "~1.0.2"
+
+"argsarray@^0.0.1":
+  "integrity" "sha1-bnIHtOzbObCviDA/pa4ivajfYcs="
+  "resolved" "https://registry.npmjs.org/argsarray/-/argsarray-0.0.1.tgz"
+  "version" "0.0.1"
 
 "arr-diff@^4.0.0":
   "integrity" "sha1-1kYQdP6/7HHn4VI1dhoyml3HxSA="
@@ -3288,6 +3304,13 @@
   "resolved" "https://registry.npmjs.org/expo-sharing/-/expo-sharing-10.1.1.tgz"
   "version" "10.1.1"
 
+"expo-sqlite@~10.1.0":
+  "integrity" "sha512-yxVa+sDWhfuvYN1MJkQZK74ND3mEOyVm6o2bRoecP6MDZW6c7NXS7Q7kP157b80h8meHukIfkhd48NAe1peenA=="
+  "resolved" "https://registry.npmjs.org/expo-sqlite/-/expo-sqlite-10.1.1.tgz"
+  "version" "10.1.1"
+  dependencies:
+    "@expo/websql" "^1.0.1"
+
 "expo-status-bar@~1.2.0":
   "integrity" "sha512-pVZZ/kDCXFK79E4dCtRecs3XLC8aiwlciutSd/fFmUPJSQZ1Txia6hlKajPt0GAYft8/YnT0V3URXzWZOBniYQ=="
   "resolved" "https://registry.npmjs.org/expo-status-bar/-/expo-status-bar-1.2.0.tgz"
@@ -3812,6 +3835,11 @@
   "integrity" "sha512-47xSUiQioGaB96nqtp5/q55m0aBQSQdyIloMOc/x+QVTDZLNmXE892IIDrJ0hM1A5vcNUDD5tDffkSP5lCaIIA=="
   "resolved" "https://registry.npmjs.org/image-size/-/image-size-0.6.3.tgz"
   "version" "0.6.3"
+
+"immediate@^3.2.2":
+  "integrity" "sha512-HR7EVodfFUdQCTIeySw+WDRFJlPcLOJbXfwwZ7Oom6tjsvZ3bOkCDJHehQC3nxJrv7+f9XecwazynjU8e4Vw3Q=="
+  "resolved" "https://registry.npmjs.org/immediate/-/immediate-3.3.0.tgz"
+  "version" "3.3.0"
 
 "immediate@~3.0.5":
   "integrity" "sha1-nbHb0Pr43m++D13V5Wu2BigN5ps="
@@ -4998,6 +5026,11 @@
   "resolved" "https://registry.npmjs.org/node-stream-zip/-/node-stream-zip-1.15.0.tgz"
   "version" "1.15.0"
 
+"noop-fn@^1.0.0":
+  "integrity" "sha1-XzPUfxPSFQ35PgywNmmemC94/78="
+  "resolved" "https://registry.npmjs.org/noop-fn/-/noop-fn-1.0.0.tgz"
+  "version" "1.0.0"
+
 "normalize-css-color@^1.0.2":
   "integrity" "sha1-Apkel8zOxmI/5XOvu/Deah8+n40="
   "resolved" "https://registry.npmjs.org/normalize-css-color/-/normalize-css-color-1.0.2.tgz"
@@ -5286,6 +5319,11 @@
   "integrity" "sha1-AerA/jta9xoqbAL+q7jB/vfgDqs="
   "resolved" "https://registry.npmjs.org/posix-character-classes/-/posix-character-classes-0.1.1.tgz"
   "version" "0.1.1"
+
+"pouchdb-collections@^1.0.1":
+  "integrity" "sha1-/mOhfal3YRq+98uAJssalVP9g1k="
+  "resolved" "https://registry.npmjs.org/pouchdb-collections/-/pouchdb-collections-1.0.1.tgz"
+  "version" "1.0.1"
 
 "pretty-format@^26.5.2", "pretty-format@^26.6.2":
   "integrity" "sha512-7AeGuCYNGmycyQbCqd/3PWH4eOoX/OiCa0uphp57NVTeAGdJGaAliecxwBDHYQCIvrW7aDBZCYeNTP/WX69mkg=="
@@ -6350,6 +6388,11 @@
   dependencies:
     "readable-stream" "~2.3.6"
     "xtend" "~4.0.1"
+
+"tiny-queue@^0.2.1":
+  "integrity" "sha1-JaZ/LG4lOyypQZd7XvdELvl6YEY="
+  "resolved" "https://registry.npmjs.org/tiny-queue/-/tiny-queue-0.2.1.tgz"
+  "version" "0.2.1"
 
 "tinymask@1.0.2":
   "integrity" "sha1-3zd1qUCHsNPQVsJW6JI8AbfsCUE="

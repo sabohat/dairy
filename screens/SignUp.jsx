@@ -1,6 +1,6 @@
 import "../services/firebase";
 import { View, Text, StyleSheet, Platform, Alert } from "react-native";
-import { TextInput, Button } from "react-native-paper";
+import { TextInput, Button, Modal } from "react-native-paper";
 import React from "react";
 import { TextInputMask } from "react-native-masked-text";
 import { getAuth } from "firebase/auth";
@@ -49,7 +49,7 @@ export default function SignUpScreen() {
       recaptchaVerifier.current
     );
 
-    let codePrompt = Alert.prompt(
+    Alert.prompt(
       "Codeni kiriting",
       "Sizga yuborilgan kodni kiriting",
       async (text) => {
@@ -104,6 +104,12 @@ export default function SignUpScreen() {
             <Text>Login</Text>
           </Pressable>
         </View>
+
+        <Modal visible={true}>
+          <View style={styles.container}>
+            <Text >Modal Text</Text>
+          </View>
+        </Modal>
       </View>
     );
   }
@@ -155,6 +161,11 @@ const styles = StyleSheet.create({
     alignItems: "center",
     flexDirection: "column",
     padding: 16,
+    backgroundColor: "white"
+  },
+  modalContainer: {
+    height: "100%",
+
   },
   title: {
     marginTop: 16,

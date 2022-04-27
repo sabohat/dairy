@@ -28,47 +28,6 @@ export default function ProfileScreen() {
           }}
           markingType={"period"}
           onCalendarToggled={(isOpen) => setIsOpen(isOpen)}
-          markedDates={
-            isOpen && {
-              "2022-04-22": {
-                startingDay: true,
-                color: "pink",
-                textColor: "white",
-              },
-              "2022-04-23": {
-                color: "pink",
-                textColor: "white",
-              },
-              "2022-04-24": {
-                selected: true,
-                color: "pink",
-                textColor: "white",
-              },
-              "2022-04-25": {
-                selected: true,
-                color: "pink",
-                textColor: "white",
-              },
-              "2022-04-26": {
-                selected: true,
-                color: "pink",
-                textColor: "white",
-              },
-              "2022-04-27": {
-                endingDay: true,
-                color: "pink",
-                textColor: "white",
-              },
-              "2022-04-16": {
-                selected: true,
-                marked: true,
-                selectedColor: "blue",
-              },
-              "2022-04-17": { marked: true },
-              "2022-04-18": { marked: true, dotColor: "red", activeOpacity: 0 },
-              "2022-04-19": { disabled: true, disableTouchEvent: true },
-            }
-          }
         />
         {!isOpen && (
           <View style={styles.section}>

@@ -1,138 +1,211 @@
-import "../services/firebase";
-import { View, Text, StyleSheet, Platform, Alert } from "react-native";
+import {
+	View,
+	Text,
+	StyleSheet,
+	Platform,
+	Pressable,
+	Alert,
+	TextInput as NativeTextInput,
+} from "react-native";
 import { TextInput, Button } from "react-native-paper";
-import React from "react";
-import { TextInputMask } from "react-native-masked-text";
-import { getAuth } from "firebase/auth";
-import { getApp } from "firebase/app";
-import DatePicker from "react-native-datepicker";
+import React, { useState } from "react";
+import DateTimePickerModal from "react-native-modal-datetime-picker";
+import moment from "moment";
+import { useAuth } from "../providers/AuthProvider";
+import Queries from "../services/queries";
+import { useNavigation } from "@react-navigation/native";
 
 export default function GetDetails() {
-  const [userData, setUserData] = React.useState({
-    duration_length: 0,
-    last_period: "",
-    cycle_length: "",
-  });
+	const [age, setAge] = React.useState("");
+	const [userName, setUserName] = React.useState("");
+	const [cycleLength, setCycleLength] = React.useState("");
+	const [periodLength, setPeriodLength] = React.useState("");
+	const [lastPeriod, setLastPeriod] = React.useState(new Date());
+	const [error, setError] = React.useState("");
+	const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
+	const navigation = useNavigation();
 
-  return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Ma'lumotlarni kiriting</Text>
-      <View style={styles.inputs}>
+	const [user] = useAuth();
 
-        <TextInput
-          placeholder="O'rtacha hayz davomiyligi"
-          style={styles.input}
-          value={userData.duration_length}
-          onChangeText={(text) =>
-            setUserData({ ...userData, duration_length: text })
-          }
-          render={(props) => {
-            return (
-              <TextInputMask
-                type={"custom"}
-                autoFocus
-                keyboardType="phone-pad"
-                options={{
-                  mask: "9",
-                }}
-                placeholder="O'rtacha hayz davomiyligi"
-                {...props}
-              />
-            );
-          }}
-        />
-        <DatePicker
-        style={styles.datePickerStyle}
-          date={date}
-          mode="date"
-          placeholder="select date"
-          format="DD/MM/YYYY"
-          minDate="01-01-1900"
-          maxDate="01-01-2000"
-          confirmBtnText="Confirm"
-          cancelBtnText="Cancel"
-          customStyles={{
-            dateIcon: {
-              position: 'absolute',
-              right: -5,
-              top: 4,
-              marginLeft: 0,
-            },
-            dateInput: {
-              borderColor : "gray",
-              alignItems: "flex-start",
-              borderWidth: 0,
-              borderBottomWidth: 1,
-            },
-            placeholderText: {
-              fontSize: 17,
-              color: "gray"
-            },
-            dateText: {
-              fontSize: 17,
-            }
-          }}
-          onDateChange={(date) => {
-            setDate(date);
-          }}
-        />
-        <TextInput
-          placeholder="O'rtacha hayz davomiyligi"
-          style={styles.input}
-          value={userData.cycle_length}
-          onChangeText={(text) =>
-            setUserData({ ...userData, cycle_length: text })
-          }
-          render={(props) => {
-            return (
-              <TextInputMask
-                type={"custom"}
-                autoFocus
-                keyboardType="phone-pad"
-                options={{
-                  mask: "99",
-                }}
-                placeholder="O'rtacha sikl davomiyligi"
-                {...props}
-              />
-            );
-          }}
-        />
-        <Button style={styles.button} mode="contained">
-          <Text>Kirish</Text>
-        </Button>
-      </View>
-    </View>
-  );
+	const showDatePicker = () => {
+		setDatePickerVisibility(true);
+	};
+
+	const hideDatePicker = () => {
+		setDatePickerVisibility(false);
+	};
+
+	const handleConfirm = (date) => {
+		console.log("A date has been picked: ", date);
+		setLastPeriod(date);
+		hideDatePicker();
+	};
+
+	const handleSubmit = async () => {
+		// validate inputs
+		if (
+			age === "" ||
+			userName === "" ||
+			cycleLength === "" ||
+			periodLength === ""
+		) {
+			setError("Iltimos, barcha ma'lumotlarni kiriting.");
+			return;
+		}
+		// check if age is a number
+		if (isNaN(age)) {
+			setError("Yosh uchun raqam kiriting");
+			return;
+		}
+		// check if cycle length is a number
+		if (isNaN(cycleLength)) {
+			setError("Hayz sikli uchun raqam kiriting");
+			return;
+		}
+		// check if period length is a number
+		if (isNaN(periodLength)) {
+			setError("Hayz davomiyligi uchun raqam kiriting");
+			return;
+		}
+		// check if max last period date is future
+		if (lastPeriod > new Date()) {
+			setError("Iltimos, to'g'ri sana kiriting");
+			return;
+		}
+
+		// // next period estimate date
+		// const nextPeriodStart = moment(lastPeriod).add(cycleLength, "days");
+		// const nextPeriodEnd = moment(nextPeriodStart).add(periodLength, "days");
+		// const nextOvulationStart = moment(nextPeriod)
+		// 	.add(periodLength, "days")
+		// 	.add(7, "days");
+		// const nextOvulationEnd = moment(nextPeriod)
+		// 	.add(periodLength, "days")
+		// 	.add(14, "days");
+
+		try {
+			await Queries.editUser(
+				userName,
+				age,
+				cycleLength,
+				periodLength,
+				lastPeriod,
+				user.uid
+			);
+
+			navigation.navigate("BottomTabNavigator");
+		} catch (error) {}
+	};
+
+	return (
+		<View style={styles.container}>
+			<Text style={styles.title}>Ma'lumotlarni kiriting</Text>
+
+			<TextInput
+				placeholder="Username kiriting"
+				style={styles.input}
+				value={userName}
+				onChangeText={setUserName}
+			/>
+
+			<TextInput
+				placeholder="Yoshingizni kiriting"
+				style={styles.input}
+				value={age}
+				onChangeText={setAge}
+				render={({ ...props }) => (
+					<NativeTextInput keyboardType="number-pad" {...props} />
+				)}
+			/>
+
+			<TextInput
+				placeholder="O'rtacha hayz sikli"
+				style={styles.input}
+				value={cycleLength}
+				onChangeText={setCycleLength}
+				render={({ ...props }) => (
+					<NativeTextInput keyboardType="number-pad" {...props} />
+				)}
+			/>
+			<TextInput
+				placeholder="O'rtacha hayz davomiyligi"
+				style={styles.input}
+				value={periodLength}
+				onChangeText={setPeriodLength}
+				render={({ ...props }) => (
+					<NativeTextInput keyboardType="number-pad" {...props} />
+				)}
+			/>
+
+			<Pressable style={styles.input} onPress={showDatePicker}>
+				<TextInput
+					placeholder="O'rtacha hayz davomiyligi"
+					value={moment(lastPeriod).format("DD/MM/YYYY")}
+				/>
+				<View
+					style={{
+						position: "absolute",
+						top: 0,
+						bottom: 0,
+						left: 0,
+						right: 0,
+					}}
+				></View>
+			</Pressable>
+
+			<DateTimePickerModal
+				isVisible={isDatePickerVisible}
+				mode="date"
+				onConfirm={handleConfirm}
+				onCancel={hideDatePicker}
+			/>
+
+			<Button
+				onPress={handleSubmit}
+				style={styles.button}
+				mode="contained"
+			>
+				<Text>Kirish</Text>
+			</Button>
+
+			{error !== "" && <Text style={styles.errorMessage}>{error}</Text>}
+		</View>
+	);
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    flexDirection: "column",
-    padding: 16,
-  },
-  title: {
-    marginTop: 16,
-    fontSize: 20,
-    fontWeight: "700",
-  },
-  inputs: {
-    width: "100%",
-    flexDirection: "column",
-    marginTop: 20,
-  },
-  input: {
-    width: "100%",
-  },
-  button: {
-    marginTop: 20,
-    padding: 10,
-  },
-  bottomText: {
-    marginTop: 20,
-    alignItems: "center",
-  },
+	container: {
+		flex: 1,
+		justifyContent: "center",
+		alignItems: "center",
+		flexDirection: "column",
+		padding: 16,
+	},
+	title: {
+		marginTop: 16,
+		fontSize: 20,
+		fontWeight: "700",
+	},
+	inputs: {
+		width: "100%",
+		flexDirection: "column",
+		marginTop: 20,
+	},
+	input: {
+		marginTop: 10,
+		width: "100%",
+	},
+	button: {
+		width: "100%",
+		marginTop: 20,
+		padding: 10,
+	},
+	bottomText: {
+		marginTop: 20,
+		alignItems: "center",
+	},
+	errorMessage: {
+		color: "red",
+		marginTop: 10,
+	},
 });

@@ -23,6 +23,7 @@ export default function DatabaseProvider({ children }) {
 
 			const db = SQLite.openDatabase("myDatabaseName.db");
 			let data = await Models.initTables(db);
+
 			console.log(data);
 		} catch (error) {
 			console.log(error);

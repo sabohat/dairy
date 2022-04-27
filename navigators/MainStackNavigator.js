@@ -6,13 +6,27 @@ import ArticlesScreen from "../screens/Articles";
 import TabBarNavigator from "./TabBarNavigator";
 import * as Sharing from "expo-sharing";
 import SignUpScreen from "../screens/SignUp";
+import GetDetails from "../screens/GetDetails";
 
 const MainStack = createNativeStackNavigator();
 
 export default function MainStackNavigator() {
 	return (
 		<MainStack.Navigator initialRouteName="SignUp">
-			<MainStack.Screen name="SignUp" component={SignUpScreen} />
+			<MainStack.Screen
+				name="SignUp"
+				component={SignUpScreen}
+				options={{
+					title: "Ro'yhatdan o'tish",
+				}}
+			/>
+			<MainStack.Screen
+				name="GetDetails"
+				component={GetDetails}
+				options={{
+					title: "Ma'lumotlarni kiritish",
+				}}
+			/>
 			<MainStack.Screen
 				name="BottomTabNavigator"
 				component={TabBarNavigator}

@@ -1,20 +1,24 @@
 import { View, Text, Pressable, StyleSheet } from "react-native";
 import React from "react";
 import {
-  Calendar,
-  CalendarProvider,
-  ExpandableCalendar,
+	Calendar,
+	CalendarProvider,
+	ExpandableCalendar,
 } from "react-native-calendars";
 
 export default function ProfileScreen() {
-  const vacation = { key: "vacation", color: "red", selectedDotColor: "blue" };
-  const massage = { key: "massage", color: "blue", selectedDotColor: "blue" };
-  const workout = { key: "workout", color: "green" };
+	const vacation = {
+		key: "vacation",
+		color: "red",
+		selectedDotColor: "blue",
+	};
+	const massage = { key: "massage", color: "blue", selectedDotColor: "blue" };
+	const workout = { key: "workout", color: "green" };
 
-  const [isOpen, setIsOpen] = React.useState(false);
-  return (
-    <View style={styles.container}>
-      <CalendarProvider>
+	const [isOpen, setIsOpen] = React.useState(false);
+	return (
+		<View style={styles.container}>
+			{/* <CalendarProvider>
         <ExpandableCalendar
           initialPosition="closed"
           // disablePan={true}
@@ -54,107 +58,107 @@ export default function ProfileScreen() {
             </View>
           </View>
         )}
-      </CalendarProvider>
-      <View style={styles.statistics}>
-        <Text>Hayz sikli</Text>
-        <Text>Normal</Text>
-      </View>
-      <View style={styles.statistics}>
-        <Text>Oxirgi hayz kunlari</Text>
-        <Text>7</Text>
-      </View>
-    </View>
-  );
+      </CalendarProvider> */}
+			<View style={styles.statistics}>
+				<Text>Hayz sikli</Text>
+				<Text>Normal</Text>
+			</View>
+			<View style={styles.statistics}>
+				<Text>Oxirgi hayz kunlari</Text>
+				<Text>7</Text>
+			</View>
+		</View>
+	);
 }
 
 const styles = StyleSheet.create({
-  container: {
-    backgroundColor: "#fff",
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  section: {
-    textAlign: "center",
-    height: 350,
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    padding: 16,
-  },
-  circle: {
-    marginTop: 20,
-    width: 300,
-    height: 300,
-    borderRadius: 150,
-    backgroundColor: "pink",
-    justifyContent: "center",
-    alignItems: "center",
-    shadowColor: "pink",
-    shadowOffset: {
-      width: 1,
-      height: 1,
-    },
-    shadowOpacity: 0.9,
-    shadowRadius: 15,
-  },
-  smallSection: {
-    textAlign: "center",
-    height: 200,
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    padding: 16,
-  },
-  smallCircle: {
-    width: 170,
-    height: 170,
-    borderRadius: 150,
-    backgroundColor: "pink",
-    justifyContent: "center",
-    alignItems: "center",
-    shadowColor: "pink",
-    shadowOffset: {
-      width: 1,
-      height: 1,
-    },
-    shadowOpacity: 0.9,
-    shadowRadius: 15,
-  },
-  text: {
-    fontSize: 24,
-  },
-  smallText: {
-      fontSize: 16,
-  },
-  smallDay: {
-    fontWeight: "bold",
-    marginVertical: 10,
-    fontSize: 28,
-  },
-  day: {
-    fontWeight: "bold",
-    marginVertical: 10,
-    fontSize: 48,
-  },
-  btn: {
-    paddingVertical: 10,
-    paddingHorizontal: 20,
-    marginTop: 20,
-    backgroundColor: "rgba(240, 140, 218, 1)",
-    borderRadius: 20,
-  },
-  btnText: {
-    color: "white",
-  },
-  statistics: {
-    width: "100%",
-    backgroundColor: "rgba(255, 232, 232, 1)",
-    marginBottom: 10,
-    borderRadius: 20,
-    padding: 20,
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "space-between",
-  },
+	container: {
+		backgroundColor: "#fff",
+		flex: 1,
+		alignItems: "center",
+		justifyContent: "center",
+	},
+	section: {
+		textAlign: "center",
+		height: 350,
+		display: "flex",
+		justifyContent: "center",
+		alignItems: "center",
+		padding: 16,
+	},
+	circle: {
+		marginTop: 20,
+		width: 300,
+		height: 300,
+		borderRadius: 150,
+		backgroundColor: "pink",
+		justifyContent: "center",
+		alignItems: "center",
+		shadowColor: "pink",
+		shadowOffset: {
+			width: 1,
+			height: 1,
+		},
+		shadowOpacity: 0.9,
+		shadowRadius: 15,
+	},
+	smallSection: {
+		textAlign: "center",
+		height: 200,
+		display: "flex",
+		justifyContent: "center",
+		alignItems: "center",
+		padding: 16,
+	},
+	smallCircle: {
+		width: 170,
+		height: 170,
+		borderRadius: 150,
+		backgroundColor: "pink",
+		justifyContent: "center",
+		alignItems: "center",
+		shadowColor: "pink",
+		shadowOffset: {
+			width: 1,
+			height: 1,
+		},
+		shadowOpacity: 0.9,
+		shadowRadius: 15,
+	},
+	text: {
+		fontSize: 24,
+	},
+	smallText: {
+		fontSize: 16,
+	},
+	smallDay: {
+		fontWeight: "bold",
+		marginVertical: 10,
+		fontSize: 28,
+	},
+	day: {
+		fontWeight: "bold",
+		marginVertical: 10,
+		fontSize: 48,
+	},
+	btn: {
+		paddingVertical: 10,
+		paddingHorizontal: 20,
+		marginTop: 20,
+		backgroundColor: "rgba(240, 140, 218, 1)",
+		borderRadius: 20,
+	},
+	btnText: {
+		color: "white",
+	},
+	statistics: {
+		width: "100%",
+		backgroundColor: "rgba(255, 232, 232, 1)",
+		marginBottom: 10,
+		borderRadius: 20,
+		padding: 20,
+		display: "flex",
+		flexDirection: "row",
+		justifyContent: "space-between",
+	},
 });

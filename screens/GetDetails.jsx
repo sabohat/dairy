@@ -72,17 +72,7 @@ export default function GetDetails() {
 			setError("Iltimos, to'g'ri sana kiriting");
 			return;
 		}
-
-		// // next period estimate date
-		// const nextPeriodStart = moment(lastPeriod).add(cycleLength, "days");
-		// const nextPeriodEnd = moment(nextPeriodStart).add(periodLength, "days");
-		// const nextOvulationStart = moment(nextPeriod)
-		// 	.add(periodLength, "days")
-		// 	.add(7, "days");
-		// const nextOvulationEnd = moment(nextPeriod)
-		// 	.add(periodLength, "days")
-		// 	.add(14, "days");
-
+		
 		try {
 			await Queries.editUser(
 				userName,
